@@ -23,11 +23,11 @@ WHERE id = :id
 
 -- :name get-books :? :*
 -- :doc retrieve all books
-SELECT * FROM BOOKS
+SELECT * FROM books
 
 -- :name save-book! :! :n
 -- :doc creates a new message using the book name, author, and timestamp keys
-INSERT INTO BOOKS
+INSERT INTO books
 (book_name, author, create_time)
 VALUES (:book_name, :author, :create_time)
 
