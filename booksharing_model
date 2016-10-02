@@ -1,0 +1,76 @@
+
+ok Sharing App
+
+Epic 1. User Registration
+
+Story 1. As a user, I should be able to login into system by providing user name and password.
+Story 2. As a user, I should be able to reset my password using forward password link.
+Story 3. As a user, I should be able to edit my profile with email, name, password.
+Story 4. As a user, I should be able to upload my profile pic.
+
+
+Epic 2.  Add Books
+
+As a user I should be able to add books into book sharing store. Books can be addred from isbn database or can provide details directly.
+
+Story 1. As a user, I should be able to search isbn store book using isbn no/author/book name.
+
+Task 1.  Create micro service for external book search. NoSQL database can be consider to store book details.  
+
+Story 2. As a user, I should be able to add book which is not register in isbn database.
+
+Epic 3. Manage My Books
+Story 1. As a user, I should be able to view all my books with their lent status.
+Story 2. As a user, I should be able to edit/delete books.
+
+
+Epic 4. Search Books
+Story 1. As a user, I should be able to search books using book name, publisher, tags, author, isbn for availability.
+
+Epic 5. Lent process
+Story 1. As a user, I should be able to request book which is available for borrowing.
+Story 2. As a owner, I should be able to accept book lent request for my book.
+Story 3. As a user, I should be able to raise confirm book return request for the owner.
+Story 4. As a owner, I should be able to confirm book returned.
+
+Epic 6. Dashboard
+Story 1. As a user, I should be able to view all recently added books.
+Story 2. As a user, I should be able to view popular books.
+
+Epic 7. Feedback
+Story 1. As a user, I should be able to provide feedback for the books.
+
+
+
+
+Epic 1. User Registration
+
+User Table
+[:username  :password :full_nam  :email :reset_token :is_active :pic_url :created_on :modified_on] 
+
+Items
+[:id :item_code :isbn_no :name :author]
+
+Book Details
+[:code :description :thumbnail_path :publisher :price :published_on :edition]
+
+Book<->Owner
+[:item_code :username]
+
+Book_Lent_status
+[:item_code :borrower :due_date :returned_date :is_lent] 
+
+Book_Lent_Task
+[:item_code :borrower :owner :action :description]
+
+- Borrower raise request, which create task for owner for approval.
+- When owner approve, task created for borrower for return task and entry will be instered in Book_Lent_Status. 
+- Borrower will return book and raise request to confirm for owner. It will create task for approving return book.
+- Once owner approved it will update Book_Lent_Status with :is_lent=0.
+
+
+
+Configurable rules:
+1. User can not borrow more than N books.
+2. User can not delete books which is borrowed to some one else.
+
