@@ -31,6 +31,26 @@ body {
   }
 }
 
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.horizontal-line{
+  border-color:#0a0a69;
+  border-width: 1px;
+}
+
+.form-control{
+  display:inline-block;
+  line-height:1.5;
+  color:#55595c;
+  background-color:#fff;
+  border:1px solid #ccc;
+  border-radius:.25rem;
+  width:75%;
+}
+
 @-moz-keyframes three-quarters-loader {
     0% {
         -moz-transform: rotate(0deg);
